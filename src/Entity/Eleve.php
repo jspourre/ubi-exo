@@ -7,7 +7,7 @@ use App\Repository\EleveRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use App\Controller\MoyenneController;
+use App\Controller\MoyenneParEleveController;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -20,7 +20,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *         "method"="GET",
  *         "path"="/eleve/{id}/moyenne",
  *     "requirements"={"id"="\d+"},
- *         "controller"=MoyenneController::class,
+ *         "controller"=MoyenneParEleveController::class,
  *     }
  *  }))
  * @ORM\Entity(repositoryClass=EleveRepository::class)

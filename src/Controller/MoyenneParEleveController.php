@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 
-class MoyenneController extends AbstractController
+class MoyenneParEleveController extends AbstractController
 {
 
     public function __invoke(Eleve $data )

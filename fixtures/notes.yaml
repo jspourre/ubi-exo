@@ -1,0 +1,5 @@
+App\Entity\Note:
+  note_{1..200}:
+    note: <biasedNumberBetween(0,20,'sqrt')>
+    matiere: <word()>
+    eleve: '@eleve_*'

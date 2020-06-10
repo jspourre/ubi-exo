@@ -6,6 +6,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\NoteRepository;
 use Doctrine\ORM\Mapping as ORM;
 use App\Controller\NoteController;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ApiResource(
  *     itemOperations={
@@ -32,11 +34,19 @@ class Note
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\Type("float")
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 20,
+     *      notInRangeMessage = "You must be between {{ min }}cm and {{ max }}",
+     * )
      */
     private $note;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Type("string")
      */
     private $matiere;
 

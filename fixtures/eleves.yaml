@@ -1,0 +1,5 @@
+App\Entity\Eleve:
+  eleve_{1..30}:
+    nom: <lastName()>
+    prenom: <firstName()>
+    dateNaissance: <dateTime()>

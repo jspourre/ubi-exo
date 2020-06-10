@@ -19,6 +19,16 @@ class NoteRepository extends ServiceEntityRepository
         parent::__construct($registry, Note::class);
     }
 
+    public function getMoyenne()
+    {
+        return round($this->createQueryBuilder('n')
+            ->select('AVG(n.note)')
+            ->getQuery()
+            ->getSingleScalarResult(),
+        2
+        );
+    }
+
     // /**
     //  * @return Note[] Returns an array of Note objects
     //  */

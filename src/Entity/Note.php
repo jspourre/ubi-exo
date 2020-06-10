@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\NoteRepository;
 use Doctrine\ORM\Mapping as ORM;
 use App\Controller\NoteController;
+use App\Controller\MoyenneDesNotesController;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -19,8 +20,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  *         "path"="/notes/eleve/{id}/",
  *     "requirements"={"id"="\d+"},
  *         "controller"=NoteController::class,
+ *     },
+ *  },
+ *     collectionOperations={
+ *     "moyenne"={
+ *         "method"="get",
+ *         "path"="/notes/moyenne/",
+ *         "controller"=MoyenneDesNotesController::class,
  *     }
- *  })
+ *     })
  * @ORM\Entity(repositoryClass=NoteRepository::class)
  */
 class Note

@@ -37,11 +37,9 @@ class NoteTest extends ApiTestCase
 
     public function testAjoutNoteParIdEleve(): void
     {
-        $id = 176;
-        $response = static::createClient()->request("POST", 'http://ubitrans-exo.loc/api/note/eleve/'+$id, ['json' => [
+        $response = static::createClient()->request("POST", 'http://ubitrans-exo.loc/api/notes/eleve/8/', ['json' => [
             "note" => 18,
             "matiere" => 'SVT',
-            "eleve" => $this->findIriBy(Eleve::class, ['id' => 176])
         ]]);
 
         $this->assertResponseStatusCodeSame(201);

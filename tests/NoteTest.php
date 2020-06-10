@@ -35,6 +35,19 @@ class NoteTest extends ApiTestCase
         $this->assertMatchesResourceItemJsonSchema(Note::class);
     }
 
+    public function testAjoutNoteParIdEleve(): void
+    {
+        $response = static::createClient()->request("POST", 'http://ubitrans-exo.loc/api/notes/eleve/8/', ['json' => [
+            "note" => 18,
+            "matiere" => 'SVT',
+        ]]);
+
+        $this->assertResponseStatusCodeSame(201);
+        $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
+        $this->assertRegExp('~^/api/notes/\d+$~', $response->toArray()['@id']);
+        $this->assertMatchesResourceItemJsonSchema(Note::class);
+    }
+
     public function testAjoutNoteIncomplete(): void
     {
         $response = static::createClient()->request("POST", 'http://ubitrans-exo.loc/api/eleves', ['json' => [

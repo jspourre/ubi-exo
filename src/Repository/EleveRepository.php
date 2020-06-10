@@ -19,6 +19,17 @@ class EleveRepository extends ServiceEntityRepository
         parent::__construct($registry, Eleve::class);
     }
 
+    public function calculMoyenneParEleve(int $id)
+    {
+        return round($this->createQueryBuilder('e')
+            ->select('AVG(n.note)')
+            ->join('e.notes', 'n')
+            ->where('e.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getSingleScalarResult(), 2);
+    }
+
     // /**
     //  * @return Eleve[] Returns an array of Eleve objects
     //  */

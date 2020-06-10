@@ -7,10 +7,22 @@ use App\Repository\EleveRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Controller\MoyenneController;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     itemOperations={
+ *     "get",
+ *     "put",
+ *     "delete",
+ *     "get_eleve_moyenne"={
+ *         "method"="GET",
+ *         "path"="/eleve/{id}/moyenne",
+ *     "requirements"={"id"="\d+"},
+ *         "controller"=MoyenneController::class,
+ *     }
+ *  }))
  * @ORM\Entity(repositoryClass=EleveRepository::class)
  */
 class Eleve

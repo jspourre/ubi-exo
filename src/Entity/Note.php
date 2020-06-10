@@ -5,9 +5,20 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\NoteRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use App\Controller\NoteController;
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     itemOperations={
+ *     "get",
+ *     "put",
+ *     "delete",
+ *     "post_by_id_eleve"={
+ *         "method"="POST",
+ *         "path"="/notes/eleve/{id}/",
+ *     "requirements"={"id"="\d+"},
+ *         "controller"=NoteController::class,
+ *     }
+ *  })
  * @ORM\Entity(repositoryClass=NoteRepository::class)
  */
 class Note

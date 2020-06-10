@@ -30,13 +30,6 @@ class EleveTest extends ApiTestCase
 
         $this->assertResponseStatusCodeSame(201);
         $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
-      /*  $this->assertJsonContains([
-            '@context' => '/api/contexts/Eleve',
-            '@type' => 'Eleve',
-            'nom' => 'Atreides',
-            'prenom' => 'Paul',
-            'dateNaissance' => '1990-07-31T00:00:00+00:00',
-        ]); necessite phpunit 8 */
         $this->assertRegExp('~^/api/eleves/\d+$~', $response->toArray()['@id']);
         $this->assertMatchesResourceItemJsonSchema(Eleve::class);
     }
@@ -46,6 +39,7 @@ class EleveTest extends ApiTestCase
         $response = static::createClient()->request("POST", 'http://ubitrans-exo.loc/api/eleves', ['json' => [
             'nom' => 'Harkonnen',
         ]]);
+
         $this->assertResponseStatusCodeSame(500);
         $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
 
@@ -57,7 +51,6 @@ class EleveTest extends ApiTestCase
         $client = static::createClient();
 
         $iri = $this->findIriBy(Eleve::class, ['nom' => 'Ullrich']);
-        var_dump($iri);
         $client->request('PUT', $iri, ['json' => [
             'prenom' => 'Leto',
         ]]);
